@@ -1,0 +1,21 @@
+STREAMSCOUT OP WINDOWS
+
+1. Pak deze hele map uit.
+2. Dubbelklik op INSTALLEREN.bat.
+3. Wanneer Python ontbreekt:
+   - installeer Python;
+   - vink "Add python.exe to PATH" aan;
+   - start INSTALLEREN.bat daarna opnieuw.
+4. Na de installatie dubbelklik je op START_APP.bat.
+5. Je browser opent automatisch op http://localhost:8000
+
+OP JE IPHONE
+- Zorg dat iPhone en computer op dezelfde wifi zitten.
+- Zoek het lokale IP-adres van de computer met: ipconfig
+- Open op je iPhone: http://JOUW-IP:8000
+- Safari > Deel > Zet op beginscherm.
+
+BELANGRIJK
+- Laat het zwarte venster open tijdens het analyseren.
+- Een VOD van 48 uur kan zeer lang duren en veel opslag gebruiken.
+- Gebruik alleen content die je mag downloaden en herplaatsen.

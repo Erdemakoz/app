@@ -1,0 +1,27 @@
+STREAMSCOUT ZONDER PYTHON OP JOUW COMPUTER
+
+Dit pakket bevat broncode en een gratis GitHub Actions-bouwproces.
+GitHub bouwt de Windows-app op een Windows-computer in de cloud.
+
+STAPPEN
+
+1. Maak gratis een account op github.com.
+2. Maak een nieuwe repository, bijvoorbeeld "StreamScout".
+3. Upload alle bestanden en mappen uit deze zip.
+   Let erop dat ook de map ".github" wordt geupload.
+4. Open in de repository het tabblad "Actions".
+5. Open "Build StreamScout Windows".
+6. Klik op "Run workflow".
+7. Wacht totdat er een groen vinkje staat.
+8. Open de geslaagde workflow.
+9. Download onder "Artifacts": StreamScout-Windows.
+10. Pak de gedownloade zip uit.
+11. Dubbelklik op StreamScout.exe.
+
+Er hoeft dan geen Python op jouw eigen computer te staan.
+
+LET OP
+- Windows kan waarschuwen dat de app van een onbekende uitgever komt, omdat de app niet digitaal ondertekend is.
+- Een 48-uurs VOD kost zeer veel opslag, geheugen en verwerkingstijd.
+- De eerste analyse kan een Whisper-model downloaden.
+- Gebruik alleen content waarvoor je toestemming hebt om die te downloaden en opnieuw te publiceren.

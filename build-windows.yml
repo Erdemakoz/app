@@ -1,0 +1,60 @@
+name: Build StreamScout Windows
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Code ophalen
+        uses: actions/checkout@v4
+
+      - name: Python instellen
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Dependencies installeren
+        shell: powershell
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller
+
+      - name: FFmpeg downloaden
+        shell: powershell
+        run: |
+          Invoke-WebRequest `
+            -Uri "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip" `
+            -OutFile "ffmpeg.zip"
+          Expand-Archive ffmpeg.zip -DestinationPath ffmpeg_pkg
+          $ffmpeg = Get-ChildItem -Recurse ffmpeg_pkg -Filter ffmpeg.exe | Select-Object -First 1
+          $ffprobe = Get-ChildItem -Recurse ffmpeg_pkg -Filter ffprobe.exe | Select-Object -First 1
+          Copy-Item $ffmpeg.FullName .
+          Copy-Item $ffprobe.FullName .
+
+      - name: Windows app bouwen
+        shell: powershell
+        run: |
+          pyinstaller StreamScout.spec
+
+      - name: Handleiding kopieren
+        shell: powershell
+        run: |
+          Copy-Item "LEESMIJ-EXE.txt" "dist/StreamScout/LEESMIJ.txt"
+
+      - name: ZIP maken
+        shell: powershell
+        run: |
+          Compress-Archive -Path "dist/StreamScout/*" -DestinationPath "StreamScout-Windows.zip"
+
+      - name: Downloadbaar bestand uploaden
+        uses: actions/upload-artifact@v4
+        with:
+          name: StreamScout-Windows
+          path: StreamScout-Windows.zip
+          retention-days: 30
